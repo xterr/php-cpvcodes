@@ -2,31 +2,41 @@
 
 namespace Xterr\CpvCodes;
 
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Xterr\CpvCodes\Translation\TranslatorInterface;
 
 class CpvCodesFactory
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $baseDirectory;
 
     /**
-     * @var TranslatorInterface
+     * @var TranslatorInterface|null
      */
     private $translator;
 
-    public function __construct(string $baseDirectory = null, TranslatorInterface $translator = null)
+    /**
+     * @param string|null $baseDirectory
+     * @param TranslatorInterface|null $translator
+     */
+    public function __construct(?string $baseDirectory = null, ?TranslatorInterface $translator = null)
     {
         $this->baseDirectory = $baseDirectory;
-        $this->translator = $translator;
+        $this->translator    = $translator;
     }
 
+    /**
+     * @return CpvCodes
+     */
     public function getCodes(): CpvCodes
     {
         return new CpvCodes($this->baseDirectory, $this->translator);
     }
 
+    /**
+     * @return CpvCodeMappings
+     */
     public function getMappings(): CpvCodeMappings
     {
         return new CpvCodeMappings($this->baseDirectory);

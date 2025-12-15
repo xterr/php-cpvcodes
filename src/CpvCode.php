@@ -4,8 +4,8 @@ namespace Xterr\CpvCodes;
 
 class CpvCode
 {
-    public const TYPE_SUPPLY = 1;
-    public const TYPE_WORKS = 2;
+    public const TYPE_SUPPLY   = 1;
+    public const TYPE_WORKS    = 2;
     public const TYPE_SERVICES = 3;
 
     public const VERSION_1 = 1;
@@ -15,6 +15,11 @@ class CpvCode
      * @var string
      */
     private $name;
+
+    /**
+     * @var string|null
+     */
+    private $localName;
 
     /**
      * @var int
@@ -49,6 +54,11 @@ class CpvCode
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getLocalName(): string
+    {
+        return $this->localName ?? $this->name;
     }
 
     public function getType(): int

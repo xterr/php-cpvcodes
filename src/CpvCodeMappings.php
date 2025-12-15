@@ -11,7 +11,7 @@ class CpvCodeMappings
 
     private $data = [];
 
-    public function __construct(string $baseDirectory = null)
+    public function __construct(?string $baseDirectory = null)
     {
         $this->baseDirectory = $baseDirectory ?? __DIR__ . '/../Resources';
     }
@@ -36,6 +36,6 @@ class CpvCodeMappings
         }
 
         $this->data = json_decode(file_get_contents($this->baseDirectory . DIRECTORY_SEPARATOR .
-                                                    'cpvCodesMapping.json'), true);
+            'cpvCodesMapping.json'), true);
     }
 }

@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Xterr\CpvCodes\Command\BuildTranslationsCommand;
+
+$application = new Application('CPV Codes', '1.0.0');
+$application->addCommand(new BuildTranslationsCommand());
+$application->run();

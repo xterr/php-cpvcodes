@@ -1,14 +1,30 @@
 {
   "name": "xterr/php-cpvcodes",
-  "type": "library",
+  "description": "CPV Codes with framework-agnostic translation support",
   "license": "MIT",
-  "description": "CPV Codes",
+  "type": "library",
   "authors": [
     {
       "name": "Razvan Ceana",
       "email": "razvan@ceana.ro"
     }
   ],
+  "require": {
+    "php": ">=7.1 || ^8.0",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "illuminate/contracts": "^5.8 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0",
+    "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5 || ^10.0 || ^11.0",
+    "symfony/console": "^4.4 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
+    "symfony/translation": "^4.4 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
+    "symfony/translation-contracts": "^1.1 || ^2.0 || ^3.0",
+    "vimeo/psalm": "^4.30 || ^5.9 || ^6.0"
+  },
+  "suggest": {
+    "illuminate/contracts": "Required for Laravel integration",
+    "symfony/translation-contracts": "Required for Symfony integration"
+  },
   "autoload": {
     "psr-4": {
       "Xterr\\CpvCodes\\": "src/"
@@ -21,13 +37,14 @@
       ]
     }
   },
-  "require": {
-    "php": ">=7.1 || ^8.0",
-    "ext-json": "*"
-  },
-  "require-dev": {
-    "symfony/translation": "^6.2",
-    "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "^5.9"
+  "bin": [
+    "bin/console"
+  ],
+  "scripts": {
+    "test": "phpunit",
+    "translations:build": "php bin/console build:translations all",
+    "translations:laravel": "php bin/console build:translations laravel:generate",
+    "translations:php": "php bin/console build:translations php:from-yaml",
+    "translations:yaml": "php bin/console build:translations yaml:generate"
   }
 }
