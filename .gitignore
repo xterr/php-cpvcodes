@@ -5,3 +5,4 @@
 .claude
 composer.lock
 PLAN.md
+phpunit.xml.dist
